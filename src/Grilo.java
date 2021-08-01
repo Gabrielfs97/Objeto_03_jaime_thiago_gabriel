@@ -4,6 +4,7 @@ public class Grilo {
 	
 	Random random = new Random();
 	String nome;
+
 	
 	int pulo;
 	int puloMax = 100;
@@ -14,14 +15,16 @@ public class Grilo {
 	public Grilo (String nome){
 		this.distancia = 0;
 		this.contPulos = 0;
+		this.nome = nome;
 	}
 	
 	public void Pular () {
 		this.pulo = random.nextInt(puloMax - puloMin + 1) + puloMin;
 		this.distancia += this.pulo;
 		this.contPulos ++;
-		System.out.println("Grilo pulou " + pulo + "cm e percorreu " + distancia + "cm!");
-		System.out.println("Grilo deu " + contPulos + " pulos!");
+		System.out.println( this.nome + " pulou " + this.pulo + "cm e percorreu " + this.distancia + "cm!");
+		
+		System.out.println( this.nome + " deu " + this.contPulos + " pulos!");
 	}
 	
 }
