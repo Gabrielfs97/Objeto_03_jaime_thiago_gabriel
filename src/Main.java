@@ -1,32 +1,36 @@
+import java.util.Scanner;
+
 
 public class Main {
 	
-	
-  
-  
 
 	public static void main(String[] args) {
 		
 
-		Grilo[] grilo;
+		int pista = 0;
+		int quantidadeGrilos = 0;
 		
-		grilo = new Grilo[5];
+		try (Scanner input = new Scanner(System.in)) {
+			System.out.println("Quantos grilos devem competir?");
+			 quantidadeGrilos = input.nextInt();
+			 
+			 System.out.println("Quantos cm deve ter a corrida?");
+			 pista = input.nextInt();
+		}
+		 
+		Grilo[] grilo = new Grilo[quantidadeGrilos];
 		
-		grilo[0] = new Grilo("joaquin");
-		grilo[1] = new Grilo("jorge");
-		grilo[2] = new Grilo("bejamin");
-		grilo[3] = new Grilo("bores");
-		grilo[4] = new Grilo("Marcia");
+		for(int i =0; i < quantidadeGrilos; i++) {
+			grilo[i] = new Grilo();
+			grilo[i].setNome("Grilo_" + (i + 1));
+			grilo[i].setDistanciaTotal(pista);
+		}
 		
-		int pista = 600;
-		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < quantidadeGrilos; i++) {
+			grilo[i].start();
 			
-	        while (grilo[i].distancia < pista)
-	       {
-	                       grilo[i].Pular();
-	                       }
-	}
+		}
+		
 		
 	}
 	

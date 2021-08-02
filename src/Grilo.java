@@ -1,30 +1,45 @@
 import java.util.Random;
 
-public class Grilo {
+public class Grilo extends Thread{
 	
 	Random random = new Random();
 	String nome;
 
 	
-	int pulo;
-	int puloMax = 100;
-	int puloMin = 10;
-	int contPulos;
-	int distancia;
+	private int pulo;
+	private int puloMax = 100;
+	private int puloMin = 10;
+	private int contPulos = 0;
+	private int distancia = 0;
+	
+	int distanciaTotal = 100;
 
-	public Grilo (String nome){
-		this.distancia = 0;
-		this.contPulos = 0;
-		this.nome = nome;
-	}
+	
 	
 	public void Pular () {
 		this.pulo = random.nextInt(puloMax - puloMin + 1) + puloMin;
 		this.distancia += this.pulo;
 		this.contPulos ++;
-		System.out.println( this.nome + " pulou " + this.pulo + "cm e percorreu " + this.distancia + "cm!");
+		System.out.println( this.nome + " pulou " + this.pulo + "cm        e já percorreu " + this.distancia + "cm! \n");
 		
-		System.out.println( this.nome + " deu " + this.contPulos + " pulos!");
+	}
+	
+	@Override
+	public void run() {
+		
+		while (distancia < distanciaTotal) {
+			Pular();
+			
+			}
+		System.out.println( this.nome + " alcançou a linha de chegada com " + this.contPulos + " pulos! \n");
+		}
+	
+	public void setDistanciaTotal(int total) {
+		distanciaTotal = total;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 }
