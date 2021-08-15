@@ -41,5 +41,6 @@ public class Grilo extends Thread{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	
 }
