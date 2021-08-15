@@ -30,9 +30,15 @@ public class Main {
 			grilo[i] = new Grilo();
 			grilo[i].setNome("Grilo_" + (i + 1));																			
 			grilo[i].setDistanciaTotal(pista);
+			
+			if (Time_A.size() <= Time_B.size()) {
+				Time_A.add(grilo[i]);
+			} else {
+				Time_B.add(grilo[i]);
+			}
+			
 		}
 		
-	
 		for (int i = 0; i < quantidadeGrilos; i++) {
 			grilo[i].start();
 			
