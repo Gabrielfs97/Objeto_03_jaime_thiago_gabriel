@@ -13,6 +13,10 @@ public class Main {
 		try (Scanner input = new Scanner(System.in)) {
 			System.out.println("Quantos grilos devem competir?");
 			 quantidadeGrilos = input.nextInt();
+			 while (quantidadeGrilos < 0|| quantidadeGrilos > 6) {
+			 System.out.println("Por favor, insira um valor entre 2 e 6.");
+			 quantidadeGrilos = input.nextInt();
+			 }
 			 
 			 System.out.println("Quantos cm deve ter a corrida?");
 			 pista = input.nextInt();
@@ -26,10 +30,12 @@ public class Main {
 			grilo[i].setDistanciaTotal(pista);
 		}
 		
-		for (int i = 0; i < quantidadeGrilos; i++) {
+	
+		
+		/*for (int i = 0; i < quantidadeGrilos; i++) {
 			grilo[i].start();
 			
-		}
+		}*/
 		
 		
 	}
