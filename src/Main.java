@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.Semaphore;
 import java.util.ArrayList;
 
 public class Main {
@@ -6,9 +7,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-
+		
 		int pista = 0;
 		int quantidadeGrilos = 0;
+		
+		Semaphore semaphore = new Semaphore(1);
+	
 		
 		try (Scanner input = new Scanner(System.in)) {
 			System.out.println("Quantos grilos devem competir?");
@@ -21,13 +25,13 @@ public class Main {
 			 System.out.println("Quantos cm deve ter a corrida?");
 			 pista = input.nextInt();
 		}
-		ArrayList<Grilo> Time_A = new ArrayList(); 
-		ArrayList<Grilo> Time_B = new ArrayList(); 
+		ArrayList<Grilo> Time_A = new ArrayList<Grilo>(); 
+		ArrayList<Grilo> Time_B = new ArrayList<Grilo>(); 
 		
 		Grilo[] grilo = new Grilo[quantidadeGrilos];
 		
 		for(int i =0; i < quantidadeGrilos; i++) {
-			grilo[i] = new Grilo();
+			grilo[i] = new Grilo(semaphore);
 			grilo[i].setNome("Grilo_" + (i + 1));																			
 			grilo[i].setDistanciaTotal(pista);
 			
@@ -43,11 +47,10 @@ public class Main {
 			grilo[i].start();
 			
 		}
-		
+		}
 		
 	}
 	
-}
 
 	
 
